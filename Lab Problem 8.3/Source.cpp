@@ -37,6 +37,7 @@ int convertRomanToInt(string str)
 
         }
         total += x;
+
     }
     return total;
 }
