@@ -6,18 +6,42 @@
 
 using namespace std;
 int romanCharValue(char r);
+int convertRomanToInt(string str);
 int main()
 {
     char r;
+    string str;
     while (true) {
         cout << "Enter a roman number or Q to quit: ";
-        cin >> r;
-        if (r == 'Q') break;
-        int x = romanCharValue(r);
+        getline(cin, str);
+        if (str == "Q") break;
+        int x = convertRomanToInt(str);
         cout << "roman number = " << x << endl;
     }
     return 0;
 }
+int convertRomanToInt(string str)
+{
+    int x;
+    int total=0;
+    for (int i = 0; str[i];i++)
+    {
+        if (romanCharValue(str[i]) >= romanCharValue(str[i + 1]))
+        {
+            x = romanCharValue(str[i]);
+        }
+        else
+        {
+            x = romanCharValue(str[i + 1]) - romanCharValue(str[i]);
+                i++;
+
+        }
+        total += x;
+    }
+    return total;
+}
+
+
     int romanCharValue(char r)
     {
         if (r == 'I')
